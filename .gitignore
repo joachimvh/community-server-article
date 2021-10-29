@@ -6,3 +6,6 @@ tmp
 output
 *.log
 *.diff
+
+# Has issues due to stored platform
+Gemfile.lock
