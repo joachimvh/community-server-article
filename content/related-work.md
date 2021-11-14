@@ -7,6 +7,8 @@ Many more references
 Figure out what CSS does better than other solutions
 {:.todo}
 
+<span class="comment" data-author="RV">More specifically: why off-the-shelf LDP solutions would not do</span>
+
 use more complex request (PATCH) to explain why CSS handles this better
 - NSS would not be able to add ACP instead of ACL
 
