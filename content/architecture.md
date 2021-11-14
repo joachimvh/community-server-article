@@ -1,17 +1,26 @@
 ## Architecture
 {:#architecture}
 
+### Dependency Injection
 The architecture of the server heavily makes use of dependency injection:
+<span class="comment" data-author="RV">First say why: what is the need. Also reiterate what DI is (cfr. Components.js article), and explain that DI can also be used in conjunction with declarative config files</span>
 every class is independent of the other classes and only depends on interfaces.
+<span class="comment" data-author="RV">…because classes do not create or get their dependencies, the get them passed in. Cue declarative.</span>
 This allows us to easily swap out classes for other implementations,
 as long as they follow the same interface,
 which provides the required flexibility mentioned in [](#requirements).
 How we link those components together is covered in [](#configuration).
+<span class="comment" data-author="RV">Now: why do we want to do that? One, it's great for small behavioral changes (re: requirements testing and research, also evolving spec). Two, reuse in different configurations (as a bigger version of one). Three, testing/small problem (cfr. paragraph below)</span>
 
 One related aspect is that every component is responsible for solving a small problem
 while being mostly unaware of the bigger picture.
+<span class="comment" data-author="RV">The para below is a very different point altogether; split it off to the next section.</span>
 This makes it so small parts get chipped of the problem of resolving a request 
 until there is nothing left and the answer has been output.
+
+### High-level Architectural View
+<span class="comment" data-author="RV">First more info needed about what a Solid request will look like. Also overview of different parts of the spec, hence different components of the server. Need a high-level overview first.</span>
+<span class="comment" data-author="RV">Does RelWork cover this?</span>
 
 ### Reductive Request Processing(tm)
 <figure id="architecture-diagram" class="listing">
@@ -23,12 +32,14 @@ The path an HTTP request takes through the server.
 
 Markdown lists seem to not render as expected so should use a different format.
 {:.todo}
+<span class="comment" data-author="RV">I think you're importing it as code; can we just inline it?</span>
 
 [](#architecture-diagram) shows a simplified overview of how an LDP request gets resolved by
 being passed through several components.
 It starts as an HTTP request and ends as the output is written as an HTTP response.
 The steps are as follows:
-1. The request is parsed into an easy-to-use Operation object 
+
+1. The request is parsed into an <span class="rephrase" data-author="RV">easy-to-use</span> Operation object 
    containing all the parsed essentials of the request.
 2. We extract the credentials from the request. 
    Generally this will either be blank or the WebID identifying who is doing the request.
@@ -42,6 +53,7 @@ The steps are as follows:
 7. The Response Description is used to write a response.
 
 Backend data access is hidden behind a Resource Store.
+<span class="rephrase" data-author="RV">First the why, then the how</span>
 This interface has functions corresponding to all the CRUD requirements.
 The Operation handler in step 6 then calls the corresponding function based on the HTTP method.
 
@@ -62,7 +74,7 @@ Each store again handles a specific a part of the complete behaviour that is exp
   which is a simple interface to support a specific storage method.
   E.g., file based, memory based, etc.
 
-### PATCH
+### Example Request Runthrough: `PATCH`
 One specific example of how the server makes use of smaller independent tools to solver a bigger problem
 can be seen in how it handles PATCH requests.
 Currently, Solid servers generally only accept PATCH request 
