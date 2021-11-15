@@ -10,10 +10,11 @@
   <meta name="citation_title" content="Solid Community Server: TODO">
   <meta name="citation_author" content="Joachim Van Herwegen" />
   <meta name="citation_author" content="Ruben Taelman" />
-  <meta name="citation_author" content="Ruben Verborgh" />
   <meta name="citation_author" content="Erik Mannens" />
+  <meta name="citation_author" content="Tim Berners-Lee" />
+  <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2021/10/29" />
+  <meta name="citation_publication_date" content="2021/11/15" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -23,8 +24,9 @@
   <ul id="authors">
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://github.com/joachimvh/" typeof="foaf:Person schema:Person" resource="https://data.verborgh.org/people/joachim_van_herwegen">Joachim Van Herwegen</a><a href="#idlab"><sup>1</sup></a></li>
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="http://www.rubensworks.net/" typeof="foaf:Person schema:Person" resource="http://www.rubensworks.net/#me">Ruben Taelman</a><a href="#idlab"><sup>1</sup></a></li>
-    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a><a href="#idlab"><sup>1</sup></a></li>
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.ugent.be/ea/idlab/en/members/erik-mannens.htm" typeof="foaf:Person schema:Person" resource="https://data.verborgh.org/people/erik_mannens">Erik Mannens</a><a href="#idlab"><sup>1</sup></a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.w3.org/People/Berners-Lee/" typeof="foaf:Person schema:Person" resource="https://www.w3.org/People/Berners-Lee/card#i">Tim Berners-Lee</a><a href="#idlab"><sup>1</sup></a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a><a href="#idlab"><sup>1</sup>,<sup>2</sup></a></li>
   </ul>
 
   <ul id="affiliations">
@@ -32,6 +34,7 @@
           Department of Electronics and Information Systems,
           Ghent University – imec
           <br />E-mail: joachim.vanherwegen@ugent.be</li>
+    <li id="oxford"><sup>2</sup>University of Oxford</li>
   </ul>
 
 </header>
@@ -48,8 +51,11 @@
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Abstract</h2>
       <!-- Context      -->
-      <p>Solid servers provide the API through which clients interface with user data.
+      <p><span class="comment" data-author="RV">We’re gonna need a bit more context here 🙂 Proposal: how Linked Data has a strong association with public data, but that it actually also can be used for private data and everything in between. That’s the idea behind Solid: empower people and organisations with permissioned decentralized knowledge graphs.</span>
+Solid servers provide the API through which clients interface with user data.
+<span class="comment" data-author="RV">Also: Solid is a spec.</span>
 <!-- Need         -->
+<span class="comment" data-author="RV">There is a need for R&amp;D on top of Solid Pods. So just enterprise implementations of the spec won’t cut it. Need for modularity should be evident, so the task flows into it.</span>
 Due to the diverse nature of interests in Solid,
 there are many features requested from servers.
 <!-- Task         -->
@@ -58,14 +64,18 @@ we have created the Solid Community server,
 a modular server that can be configured to suit many needs.
 <!-- Object       -->
 In this paper we give an overview of the server architecture,
-and how it is situated in the Solid ecosystem.
+and how it is situated within the Solid ecosystem.
 <!-- Findings     -->
+<span class="comment" data-author="RV">This is a hard one for a systems paper indeed; but we could describe some concrete cases here where the modularity has been leveraged.</span>
+<span class="comment" data-author="RV">Spec-compliant solution, passes test suites.</span>
 Currently, there are already many parties interested in the server
 and how it evolves.
 <!-- Conclusion   -->
+<span class="comment" data-author="RV">Ready for use in scenarios X and Y.</span>
 The server achieves it goal of lowering the barrier of getting started with Solid.
 <!-- Perspectives -->
-It will evolve together with the specification and new needs that arise.</p>
+It will evolve together with the specification and new needs that arise.
+<span class="comment" data-author="RV">Concrete needs include query.</span></p>
 
     </div>
 </section>
@@ -78,26 +88,32 @@ It will evolve together with the specification and new needs that arise.</p>
 <div datatype="rdf:HTML" property="schema:description">
           <h2 property="schema:name">Introduction</h2>
 
+          <p><span class="comment" data-author="RV">TODO: the socio-economic problem Solid is solving (see my blog posts for inspiration)</span></p>
+
           <p><span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1145/2872518.2890529"><a href="https://doi.org/10.1145/2872518.2890529">Solid</a></span> <span class="references">[<a href="#ref-1">1</a>]</span> is many things.
+<span class="comment" data-author="RV">I think that conventions are not enough; technical specifications to achieve the aforementioned goal?</span>
 At the core it is a set of <a href="https://solid.github.io/specification/">API conventions</a> to facilitate
 built upon the Linked Data Platform <span class="references">[<a href="#ref-2">2</a>]</span> (LDP) specification.
+<span class="comment" data-author="RV">Before describing what it adds, explain the needs of <em>why</em> this is added</span>
 It adds, among other things, components such as identity, authentication and authorization.
-But that is just the server component.</p>
+<span class="rephrase" data-author="RV">But that is just the server component.</span></p>
 
           <p>Besides the servers, there are also the Solid applications,
 which are client applications that effectively use Solid servers as a backend through the Web.
 The idea there is that multiple applications can independently make use of the same server,
 while still interacting with the same data.
+<span class="comment" data-author="RV">Yes, make the point a bit more explicitly: the apps conform to the spec, the server conforms to the same spec, so any app works with any server. The browser/Apache comparison might be useful; here or already earlier.</span>
 This way a person only needs to store their personal data in a single place
 which can then be reused by all applications that have need of this information.</p>
 
           <p>Solid is deeply a community effort: all layers influence each other.
+<span class="comment" data-author="RV">Which layers?</span>
 The server API and specification naturally influence how the applications have to be developed.
 On the other hand, the actual experiences of application developers
 and how they experience interacting with the server
 is vital in ensuring a healthy development of the environment.</p>
 
-          <p>Due to the open source nature of Solid development,
+          <p>Due to the open-source nature of Solid development,
 both in available tooling and discussions being had,
 everyone can cooperate to improve what is available,
 which again emphasizes the community aspect of Solid.</p>
@@ -130,14 +146,18 @@ which we will discuss below.</p>
           <p>The Solid specification is still a draft specification,
 meaning it can and will change in the future.
 A consequence of this is that any Solid server implementation that wants to stay relevant
-has to be flexible enough, so it can be updated once spec changes occur.</p>
+has to be flexible enough, so it can be updated once spec changes occur.
+<span class="comment" data-author="RV">Also, the server can inform the implementation, thanks to its modularity and easy-to-plug-in code. If there’s doubt, just write the CSS module, tweak it, spec it. (I am hereby trademarking <em>Write it, tweak it, spec it</em>)</span>
+<span class="comment" data-author="RV">That then ties into research, where we can look at designing completely different APIs and algorithms, and see how it behaves</span></p>
 
           <h3 id="research">Research</h3>
           <p>We wanted to create a server that could be used to perform research on Solid servers,
+<span class="comment" data-author="RV">well not just we hopefully 🙂 but phrase from the need, not the solution</span>
 meaning it should be easy to automate setup with a variety of different features,
-such as different backends, authorization schemes, identity options, etc.</p>
+such as different backends, authorization schemes, identity options, etc.
+<span class="comment" data-author="RV">A specific class of research (and perhaps this also ties into the next point) could be intermediaries, i.e., not just the clients and servers we’re talking about today</span></p>
 
-          <h3 id="server-development">Server Development</h3>
+          <h3 id="server-del-classcomment-data-authorrvdevelopmentdel-ins-classcomment-data-authorrvcustomizationins">Server <del class="comment" data-author="RV">Development</del> <ins class="comment" data-author="RV">Customization</ins></h3>
           <p>No Solid server is ever going to fully support everything a user wants:
 there are infinite possible combinations of features that could be required.
 For this reason we wanted to ensure that the implementation allows for easy extension,
@@ -145,7 +165,8 @@ so that if, for example, a user wants the server to use their own custom backend
 they do not have to rewrite a significant part of the server logic.</p>
 
           <h3 id="application-development">Application Development</h3>
-          <p>As mentioned before, when developing a Solid application it is vital
+          <p><span class="comment" data-author="RV">Also write this in terms of needs, not solution (yet); also the need for test users, fake logins, fake failures, etc.</span>
+As mentioned before, when developing a Solid application it is vital
 that the application correctly makes uses of the Solid <code>API</code>.
 One of the easiest ways to ensure this is to test the app against an actual server.
 To this end, we wanted the server to also be easily usable by application developers:
@@ -161,6 +182,8 @@ easy to set up, easy to configure and easy to use for their test data.</p>
           <p class="todo">Many more references</p>
 
           <p class="todo">Figure out what CSS does better than other solutions</p>
+
+          <p><span class="comment" data-author="RV">More specifically: why off-the-shelf LDP solutions would not do</span></p>
 
           <p>use more complex request (PATCH) to explain why CSS handles this better
 - NSS would not be able to add ACP instead of ACL</p>
@@ -186,17 +209,26 @@ easy to set up, easy to configure and easy to use for their test data.</p>
 <div datatype="rdf:HTML" property="schema:description">
           <h2 property="schema:name">Architecture</h2>
 
+          <h3 id="dependency-injection">Dependency Injection</h3>
           <p>The architecture of the server heavily makes use of dependency injection:
+<span class="comment" data-author="RV">First say why: what is the need. Also reiterate what DI is (cfr. Components.js article), and explain that DI can also be used in conjunction with declarative config files</span>
 every class is independent of the other classes and only depends on interfaces.
+<span class="comment" data-author="RV">…because classes do not create or get their dependencies, the get them passed in. Cue declarative.</span>
 This allows us to easily swap out classes for other implementations,
 as long as they follow the same interface,
 which provides the required flexibility mentioned in <a href="#requirements">Section 2</a>.
-How we link those components together is covered in <a href="#configuration">Section 5</a>.</p>
+How we link those components together is covered in <a href="#configuration">Section 5</a>.
+<span class="comment" data-author="RV">Now: why do we want to do that? One, it’s great for small behavioral changes (re: requirements testing and research, also evolving spec). Two, reuse in different configurations (as a bigger version of one). Three, testing/small problem (cfr. paragraph below)</span></p>
 
           <p>One related aspect is that every component is responsible for solving a small problem
 while being mostly unaware of the bigger picture.
+<span class="comment" data-author="RV">The para below is a very different point altogether; split it off to the next section.</span>
 This makes it so small parts get chipped of the problem of resolving a request 
 until there is nothing left and the answer has been output.</p>
+
+          <h3 id="high-level-architectural-view">High-level Architectural View</h3>
+          <p><span class="comment" data-author="RV">First more info needed about what a Solid request will look like. Also overview of different parts of the spec, hence different components of the server. Need a high-level overview first.</span>
+<span class="comment" data-author="RV">Does RelWork cover this?</span></p>
 
           <h3 id="reductive-request-processingtm">Reductive Request Processing(tm)</h3>
           <figure id="architecture-diagram" class="listing">
@@ -215,25 +247,33 @@ until there is nothing left and the answer has been output.</p>
 </figure>
 
           <p class="todo">Markdown lists seem to not render as expected so should use a different format.</p>
+          <p><span class="comment" data-author="RV">I think you’re importing it as code; can we just inline it?</span></p>
 
           <p><a href="#architecture-diagram">Listing 1</a> shows a simplified overview of how an LDP request gets resolved by
 being passed through several components.
 It starts as an HTTP request and ends as the output is written as an HTTP response.
-The steps are as follows:
-1. The request is parsed into an easy-to-use Operation object 
-   containing all the parsed essentials of the request.
-2. We extract the credentials from the request. 
-   Generally this will either be blank or the WebID identifying who is doing the request.
-3. From the Operation we extract which CRUD permissions are required to resolve the request.
-4. The permission reader determines what the request owner is allowed to do on the target resource.
-5. The authorizer determines if the request can proceed based on the output from step 3 and 4.
-6. The Operation handler resolves the Operation and generates a Response Description,
-   containing everything needed to write a valid response.
-    - In case any of the previous steps failed, 
-      a Response Description will be generated based on the error thrown.
-7. The Response Description is used to write a response.</p>
+The steps are as follows:</p>
+
+          <ol>
+            <li>The request is parsed into an <span class="rephrase" data-author="RV">easy-to-use</span> Operation object 
+containing all the parsed essentials of the request.</li>
+            <li>We extract the credentials from the request. 
+Generally this will either be blank or the WebID identifying who is doing the request.</li>
+            <li>From the Operation we extract which CRUD permissions are required to resolve the request.</li>
+            <li>The permission reader determines what the request owner is allowed to do on the target resource.</li>
+            <li>The authorizer determines if the request can proceed based on the output from step 3 and 4.</li>
+            <li>The Operation handler resolves the Operation and generates a Response Description,
+containing everything needed to write a valid response.
+              <ul>
+                <li>In case any of the previous steps failed, 
+a Response Description will be generated based on the error thrown.</li>
+              </ul>
+            </li>
+            <li>The Response Description is used to write a response.</li>
+          </ol>
 
           <p>Backend data access is hidden behind a Resource Store.
+<span class="rephrase" data-author="RV">First the why, then the how</span>
 This interface has functions corresponding to all the CRUD requirements.
 The Operation handler in step 6 then calls the corresponding function based on the HTTP method.</p>
 
@@ -263,7 +303,7 @@ Each store again handles a specific a part of the complete behaviour that is exp
   which is a simple interface to support a specific storage method.
   E.g., file based, memory based, etc.</p>
 
-          <h3 id="patch">PATCH</h3>
+          <h3 id="example-request-runthrough-patch">Example Request Runthrough: <code>PATCH</code></h3>
           <p>One specific example of how the server makes use of smaller independent tools to solver a bigger problem
 can be seen in how it handles PATCH requests.
 Currently, Solid servers generally only accept PATCH request 
@@ -307,6 +347,7 @@ it can only apply a SPARQL UPDATE query on a set of triples.</p>
           <h2 property="schema:name">Configuration</h2>
 
           <p class="todo">How much of components.js do we explain here compared to related work?</p>
+          <p><span class="comment" data-author="RV">My opinion: none at all. We normally have explained declarative DI already above; here we just say we chose c.js because it 1) is a great TS DI that 2) has LD configs, which 3) allows for easy sharing of configs, in particular for research/experimental purposes.</span></p>
 
           <p>talk about how imports match features to help users</p>
 
@@ -314,8 +355,8 @@ it can only apply a SPARQL UPDATE query on a set of triples.</p>
 we make use of the dependency injection framework <a href="https://componentsjs.readthedocs.io/">Components.js</a>,
 which uses <a href="https://json-ld.org/">JSON-LD</a> configuration files to link all the components together.</p>
 
-          <h3 id="ease-of-use">Ease of use</h3>
-          <p>Components.js is a very strong framework with much flexibility,
+          <h3 id="span-classrephrase-data-authorrvease-of-usespan"><span class="rephrase" data-author="RV">Ease of use</span></h3>
+          <p>Components.js is a <span class="rephrase" data-author="RV">very strong</span> framework with much flexibility,
 but it does have a steep startup curve before fully understanding how configuration works.
 To this end we took several steps to make configuration as easy as possible for new users.</p>
 
@@ -323,14 +364,14 @@ To this end we took several steps to make configuration as easy as possible for 
 These include different backends, such as file or memory based,
 and examples on how to configure more complex features.</p>
 
-          <p>Since JSON-LD is used, it is possible to split the configuration up over multiple files
+          <p>Since RDF is used, it is possible to split the configuration up over multiple files
 and then import them into a single file.
 We strongly make use of this import behaviour to hide most of the configuration complexity from new users.
 Specifically, we made it so a user can choose specific features based on the files being imported.
 For example, the only difference between a configuration to set up a server with a memory backend
 compared to one with a file backend is that the first one imports <code>/storage/backend/memory.json</code>
 and the second one imports <code>/storage/backend/file.json</code>.
-This is just one of the currently 29 lines of imports that users can modify to change behaviour.
+This is just one of the imports that users can modify to change behaviour.
 To help with the choices there, all configuration subfolders contain documentation
 explaining the options available.</p>
 
@@ -367,6 +408,7 @@ This means that all code is seen by multiple people before being added.</p>
 
           <p>Another requirement of new code being added is that unit tests
 always have 100% code coverage on all code in the project.
+<span class="comment" data-author="RV">Would list this one first</span>
 While this is not immediately an indication of everything working as intended,
 it does make sure that a developer checks that new classes output data as expected.</p>
 
@@ -380,6 +422,8 @@ and all the supported LDP actions.</p>
  * Operating Philips Hue lamps through a Solid server: https://github.com/RubenVerborgh/solid-hue/
  * Data-Kitchen, a desktop app combining local files and Solid pods: https://github.com/solid/data-kitchen/</p>
 
+          <p><span class="comment" data-author="RV">And all apps that work on the server?</span></p>
+
           <p class="todo">Do we explicitly have to say which projects are related to our lab?</p>
 
           <p class="todo">Any companies/large projects we should add? Digita? Cern? …?</p>
@@ -392,7 +436,8 @@ and all the supported LDP actions.</p>
           <h2 property="schema:name">Future Work &amp; Conclusions</h2>
 
           <p>We have achieved our initial goal of creation a server that has uses for a wide target audience,
-as can be seen by the interest of both hobby users and companies.</p>
+as can be seen by the interest of both hobby users and <span class="rephrase" data-author="RV">companies</span>.
+<span class="comment" data-author="RV">Yeah, but keep in mind that our goal is R&amp;D, so even when companies are adopting this (which is great), we should still check that we are meeting our goals.</span></p>
 
           <p>In the future we want to keep making sure the server adheres to the Solid specification,
 but also keep extending its functionality so it becomes both more user-friendly
@@ -400,9 +445,10 @@ and has a wide array of different features it supports.</p>
 
           <p>One of the big challenges for the server is versioning.
 We follow the <a href="https://semver.org/">semantic versioning</a> guidelines to make sure
-we do not accidentally break a server installation.
+we do not break any server installation.
 For each new release, notes are added indicating both the new features 
-and how configurations of older versions can be upgraded to the newer version.</p>
+and how configurations of older versions can be upgraded to the newer version.
+<span class="comment" data-author="RV">Specific challenge of “everything” being public API?</span></p>
 
           <p>Due to the modular nature of the components,
 it is not required for all new features to be added to the main repository.
