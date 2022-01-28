@@ -1,3 +1,4 @@
+TODO: PRETTY PICTURE
 Operation Handler
 -> (Monitoring Store)
 -> (Index Store)
