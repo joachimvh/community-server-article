@@ -1,28 +1,105 @@
 ## Architecture
 {:#architecture}
 
-### Dependency Injection
-The architecture of the server heavily makes use of dependency injection:
-<span class="comment" data-author="RV">First say why: what is the need. Also reiterate what DI is (cfr. Components.js article), and explain that DI can also be used in conjunction with declarative config files</span>
-every class is independent of the other classes and only depends on interfaces.
-<span class="comment" data-author="RV">…because classes do not create or get their dependencies, the get them passed in. Cue declarative.</span>
-This allows us to easily swap out classes for other implementations,
-as long as they follow the same interface,
-which provides the required flexibility mentioned in [](#requirements).
-How we link those components together is covered in [](#configuration).
-<span class="comment" data-author="RV">Now: why do we want to do that? One, it's great for small behavioral changes (re: requirements testing and research, also evolving spec). Two, reuse in different configurations (as a bigger version of one). Three, testing/small problem (cfr. paragraph below)</span>
+[](#requirements) explained that there is a strong need for flexibility in the server.
+We want it to be possible for anyone to set up the server tailored specifically tot their needs.
+We enabled this by making the codebase completely modular:
+all classes are completely independent of each other and only define which interfaces they expect.
+This allows anyone to easily swap out any implementation without impacting other components,
+as long as they follow those same interfaces.
 
-One related aspect is that every component is responsible for solving a small problem
-while being mostly unaware of the bigger picture.
-<span class="comment" data-author="RV">The para below is a very different point altogether; split it off to the next section.</span>
-This makes it so small parts get chipped of the problem of resolving a request 
-until there is nothing left and the answer has been output.
+### Dependency Injection
+This entire subsection seems to not really fit here and should perhaps be moved somewhere else.
+Components.js should also have been partially described in related work already.
+{:.todo}
+
+To combine all our classes and inject their dependencies,
+we make use of a Dependency Injection (DI) framework.
+Such a framework injects actual implementations of the expected interfaces into the classes.
+This way the actual class chains are configured externally to our implementations,
+making these much easier to change.
+We specifically use the [Components.js](cite:cites componentsjs) DI framework,
+which uses declarative RDF configuration files to link everything together.
+How this works in practice is covered in [](#configuration).
+
+### Components
+Due to the nature of our DI-based architecture,
+every component is mostly unaware of what its own role is in the grand scheme of things.
+For example, there is a component that converts authentication headers into a usable identifier,
+not knowing which component will make use of it.
+There is component that converts thrown errors to serializable output,
+and another simply takes incoming RDF serializations and converts them to quad objects.
+
+The combination of this architecture, combined with the DI framework, 
+brings many advantages for both developers and users.
+
+#### Making sure the server correctly implements the Solid protocol
+The Solid protocol is defined in a specification that is still evolving.
+We know that it is not final and future changes are still planned.
+It is important that the impact of such changes impacts a minimal amount of components.
+On the one hand this makes it much easier for developers to keep the server in line with the specification.
+On the other hand, this also reduces the chances of breaking any extensions
+that might have been created for the server.
+
+#### Extending the server features
+Components.js does not require the components it links together to be in the same repository.
+It can import components from other projects.
+This means anyone can easily extend the features of the server by writing their own modules.
+In case multiple ideas need to be compared it only requires a configuration change
+to set up multiple different versions of the server.
+This is highly useful when doing research to evaluate different aspects,
+or even as part of discussions on the Solid specification to immediately see certain suggestions in practice.
+
+#### Components and configurations can be reused
+While it is possible to extend the server with custom components,
+the reverse is also true: individual components of the server can be reused.
+All the components are exposed through the project,
+so it is possible to include only a few of them specifically if preferred.
+The configurations provided with the server can also be reused,
+allowing the reuse of partial blocks without having to reconfigure them completely.
 
 ### High-level Architectural View
-<span class="comment" data-author="RV">First more info needed about what a Solid request will look like. Also overview of different parts of the spec, hence different components of the server. Need a high-level overview first.</span>
-<span class="comment" data-author="RV">Does RelWork cover this?</span>
+Should cover some parts of how a Solid server works in the related work as we don't want to cover all of it here?
+Should also use references instead of just links.
+{:.todo}
 
-### Reductive Request Processing(tm)
+The goal of the server is to accept incoming HTTP requests
+and send a correct response based on what is defined in the Solid specification.
+The specification consists of several core parts.
+The community server supports these by having different components for each of them.
+These can then be consecutively applied to the incoming request to reach the final result,
+with each of them potentially stopping the request in case of an invalid request.
+Below we cover some of these major core components.
+
+#### Authentication
+Authentication in Solid is part of the [Solid-OIDC](https://solid.github.io/solid-oidc/) specification.
+The authentication block of the server will parse the relevant headers of an incoming request
+to identify the agent calling the server.
+It will output the correct identifier to be used by other components.
+
+#### Authorization
+For authorization, the [Web Access Control](https://solidproject.org/TR/wac) specification is used.
+There are multiple components at work here as handling this requires several steps.
+The sever has to determine which permissions are required based on the kind of request.
+It also has to determine which permissions are allowed on the target resource.
+A request is only valid if required permissions are allowed.
+
+#### Solid Protocol
+The main Solid specification is the [Solid Protocol](https://solidproject.org/TR/protocol).
+It is based on the [Linked Data Platform](cite:cites ldp) specification
+and determines how different possible HTTP methods should be interpreted by the server.
+There are many relevant components here as there are many possibilities here,
+but the end goal is always to perform the necessary data action and return the result.
+
+### Reductive Request Processing
+As we mentioned before,
+all the components in the server solve a specific problem
+and are mostly unaware of the grander scheme of what is going on.
+Requests to the server are solved by letting each component
+handle a small part of the problem,
+so the next component can continue and do the same,
+until it has been completely solved.
+
 <figure id="architecture-diagram" class="listing">
 ````/figures/architecture-diagram.md````
 <figcaption markdown="block">
@@ -30,12 +107,7 @@ The path an HTTP request takes through the server.
 </figcaption>
 </figure>
 
-Markdown lists seem to not render as expected so should use a different format.
-{:.todo}
-<span class="comment" data-author="RV">I think you're importing it as code; can we just inline it?</span>
-
-[](#architecture-diagram) shows a simplified overview of how an LDP request gets resolved by
-being passed through several components.
+[](#architecture-diagram) shows a simplified overview of how a request gets resolved.
 It starts as an HTTP request and ends as the output is written as an HTTP response.
 The steps are as follows:
 
@@ -48,14 +120,19 @@ The steps are as follows:
 5. The authorizer determines if the request can proceed based on the output from step 3 and 4.
 6. The Operation handler resolves the Operation and generates a Response Description,
    containing everything needed to write a valid response.
-    - In case any of the previous steps failed, 
-      a Response Description will be generated based on the error thrown.
-7. The Response Description is used to write a response.
+7. In case any of the previous steps failed, 
+   a Response Description will be generated based on the error thrown.
+8. The Response Description is used to write a response.
 
-Backend data access is hidden behind a Resource Store.
-<span class="rephrase" data-author="RV">First the why, then the how</span>
+### Data storage
+Solid does not specify how data should be stored,
+only how it should be returned.
+Internally we have done the same by abstracting data access with a Resource Store.
+This allows us to have different stores for different storage methods,
+such as in-memory, file-based or with a SPARQL endpoint.
 This interface has functions corresponding to all the CRUD requirements.
-The Operation handler in step 6 then calls the corresponding function based on the HTTP method.
+In the previous subsection, the Operation handler of step 6
+calls the corresponding function based on the HTTP method.
 
 <figure id="store-diagram" class="listing">
 ````/figures/store-diagram.md````
@@ -64,15 +141,17 @@ The stores an operation passes through before reaching the backend.
 </figcaption>
 </figure>
 
-In practice, the Resource store is actually several store implementations all chained together,
+In practice, the Resource Store is actually several store implementations all chained together,
 as can be seen in [](#store-diagram).
 Each store again handles a specific a part of the complete behaviour that is expected from the store:
-* The Locking store prevents multiple operations from writing to a resource at the same time.
-* The Patching store handles PATCH requests.
-* The Converting store converts representations to support content negotiation.
-* The Data Accessor store supports LDP behaviour by calling a Data Accessor class,
-  which is a simple interface to support a specific storage method.
-  E.g., file based, memory based, etc.
+<ul>
+    <li>The Locking store prevents multiple operations from writing to a resource at the same time.</li>
+    <li>The Patching store handles PATCH requests.</li>
+    <li>The Converting store converts representations to support content negotiation.</li>
+    <li>The Data Accessor store supports LDP behaviour by calling a Data Accessor class,
+      which is a simple interface to support a specific storage method.
+      E.g., file based, memory based, etc.</li>
+</ul>
 
 ### Example Request Runthrough: `PATCH`
 One specific example of how the server makes use of smaller independent tools to solver a bigger problem

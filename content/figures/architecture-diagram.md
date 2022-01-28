@@ -1,3 +1,4 @@
+TODO: PRETTY PICTURE
 - HTTP Request -- Request Parser --> Operation
 - HTTP Request -- Credentials Extractor --> Credentials
 - Operation -- Modes Extractor --> AccessModes
