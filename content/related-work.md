@@ -1,24 +1,22 @@
 ## Related Work
 {:#related-work}
 
-Many more references
+Many more references?
 {:.todo}
-
-Figure out what CSS does better than other solutions
-{:.todo}
-
-<span class="comment" data-author="RV">More specifically: why off-the-shelf LDP solutions would not do</span>
-
-use more complex request (PATCH) to explain why CSS handles this better
-- NSS would not be able to add ACP instead of ACL
-
-LDP is just an API, could also have SPARQL endpoint in addition
 
 ### Linked Data Platform
-apache marmotta? virtuoso? trellis?mayktso?
+[Linked Data Platform](cite:cites ldp) (LDP) is a set of rules to provide a RESTful API
+to read/write Linked Data resources on the Web.
+It introduces several concepts such as using URIs to identify resources
+and using RDF standards to provide information and data.
 
 ### Solid
-ESS? NSS? PSS? reactive-solid?
+The [Solid](cite:cites solid) project is a combination of [specifications](https://solid.github.io/specification/)
+with a focus on data ownership and data interoperability.
+At its core is the [Solid Protocol](https://solidproject.org/TR/protocol) specification
+which determines how Solid servers should behave.
+It is built upon the LDP specification and has a stricter
+and more well-defined expectation for each of the CRUD operations.
 
 ### Components.js
 [Components.js](cite:cites componentsjs) is a Dependency Injection framework built specifically
@@ -29,4 +27,8 @@ These descriptions are done in RDF, which means that those configuration files a
 Usually [JSON-LD](https://json-ld.org/) is used.
 
 ### OIDC
-webid, oidc
+To handle authentication, the server implements the [Solid-OIDC](https://solid.github.io/solid-oidc/) specification,
+which builds upon the [OAuth 2.0](cite:cites oauth) and 
+[OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) standards.
+These are two widely adopted standards,
+and the above specification extends them to solve problems specific for the Solid ecosystem.

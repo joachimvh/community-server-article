@@ -45,3 +45,29 @@ testing different authorization situations,
 managing different error responses, etc.
 This requires testing against an actual server that provides a quick setup and teardown,
 and can easily emulate different situations.
+
+### Existing implementations
+
+Think it makes more sense here instead of in related work?
+{:.todo}
+
+use more complex request (PATCH) to explain why CSS handles this better?
+- NSS would not be able to add ACP instead of ACL?
+
+LDP is just an API, could also have SPARQL endpoint in addition?
+
+#### Linked Data Platform
+apache marmotta? virtuoso? trellis?mayktso?
+
+<span class="comment" data-author="RV">More specifically: why off-the-shelf LDP solutions would not do</span>
+
+#### Solid servers
+There are already several existing Solid servers,
+such as [Node Solid Server](https://github.com/solid/node-solid-server/),
+[Enterprise Solid Server](https://github.com/solid/node-solid-server/),
+[TrinPod](https://trinpod.us/),
+[Reactive-Solid](https://github.com/co-operating-systems/Reactive-SoLiD),
+and several others.
+While they each have their own advantages and disadvantages,
+none of these fulfils the requirements that we set up before though.
+Specifically the customization and flexibility requirements that we have, are never fulfilled. 
