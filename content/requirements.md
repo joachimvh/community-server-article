@@ -48,26 +48,30 @@ and can easily emulate different situations.
 
 ### Existing implementations
 
-Think it makes more sense here instead of in related work?
+Think this makes more sense here instead of in related work?
+{:.todo}
+
+I don't want to talk too badly about other tools :D
 {:.todo}
 
 use more complex request (PATCH) to explain why CSS handles this better?
 - NSS would not be able to add ACP instead of ACL?
+{:.todo}
 
 LDP is just an API, could also have SPARQL endpoint in addition?
+{:.todo}
 
-#### Linked Data Platform
-apache marmotta? virtuoso? trellis?mayktso?
+Some existing LDP servers include [Apache Marmotta](https://marmotta.apache.org/),
+[Virtuoso](http://vos.openlinksw.com/owiki/wiki/VOS/VirtLDP),
+and [Trellis](https://github.com/trellis-ldp/trellis).
 
-<span class="comment" data-author="RV">More specifically: why off-the-shelf LDP solutions would not do</span>
-
-#### Solid servers
-There are already several existing Solid servers,
+There are also already several existing Solid servers,
 such as [Node Solid Server](https://github.com/solid/node-solid-server/),
 [Enterprise Solid Server](https://github.com/solid/node-solid-server/),
 [TrinPod](https://trinpod.us/),
 [Reactive-Solid](https://github.com/co-operating-systems/Reactive-SoLiD),
 and several others.
+
 While they each have their own advantages and disadvantages,
 none of these fulfils the requirements that we set up before though.
 Specifically the customization and flexibility requirements that we have, are never fulfilled. 
