@@ -21,7 +21,12 @@ apache marmotta? virtuoso? trellis?mayktso?
 ESS? NSS? PSS? reactive-solid?
 
 ### Components.js
-Also see configuration section
+[Components.js](cite:cites componentsjs) is a Dependency Injection framework built specifically
+for [TypeScript](https://www.typescriptlang.org/) projects.
+It is non-invasive in that all of its configurations happens outside the source code in external configuration files,
+which describe how classes are linked to each other and which parameters they require.
+These descriptions are done in RDF, which means that those configuration files are valid RDF serializations.
+Usually [JSON-LD](https://json-ld.org/) is used.
 
 ### OIDC
 webid, oidc
