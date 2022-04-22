@@ -17,17 +17,20 @@ The Solid specification is still a draft specification,
 meaning it can and will change in the future.
 A consequence of this is that any Solid server implementation that wants to stay relevant
 has to be flexible enough, so it can be updated once spec changes occur.
-<span class="comment" data-author="RV">Also, the server can inform the implementation, thanks to its modularity and easy-to-plug-in code. If there's doubt, just write the CSS module, tweak it, spec it. (I am hereby trademarking _Write it, tweak it, spec it_)</span>
+Likewise, a modular server can be used to inform the specification:
+if there is any doubt, a new module can quickly be added to assess the impact of a change.
 <span class="comment" data-author="RV">That then ties into research, where we can look at designing completely different APIs and algorithms, and see how it behaves</span>
 
 ### Research
-We wanted to create a server that could be used to perform research on Solid servers,
-<span class="comment" data-author="RV">well not just we hopefully 🙂 but phrase from the need, not the solution</span>
-meaning it should be easy to automate setup with a variety of different features,
-such as different backends, authorization schemes, identity options, etc.
+Solid is still growing as an ecosystem,
+this includes the research that investigates all the possibilities of using Solid as a core part of a system.
+This sometimes requires quickly setting up thousands of Solid servers for automation
+and having flexibility in their configuration such as what storage method is used,
+how authorization works,
+or how user accounts are managed, for example.
 <span class="comment" data-author="RV">A specific class of research (and perhaps this also ties into the next point) could be intermediaries, i.e., not just the clients and servers we're talking about today</span>
 
-### Server <del class="comment" data-author="RV">Development</del> <ins class="comment" data-author="RV">Customization</ins>
+### Server Customization
 No Solid server is ever going to fully support everything a user wants:
 there are infinite possible combinations of features that could be required.
 For this reason we wanted to ensure that the implementation allows for easy extension,
@@ -35,9 +38,10 @@ so that if, for example, a user wants the server to use their own custom backend
 they do not have to rewrite a significant part of the server logic.
 
 ### Application Development
-<span class="comment" data-author="RV">Also write this in terms of needs, not solution (yet); also the need for test users, fake logins, fake failures, etc.</span>
-As mentioned before, when developing a Solid application it is vital
-that the application correctly makes uses of the Solid `API`.
-One of the easiest ways to ensure this is to test the app against an actual server.
-To this end, we wanted the server to also be easily usable by application developers:
-easy to set up, easy to configure and easy to use for their test data.
+There are many things that have to be checked and kept in mind when developing a new Solid client application.
+As mentioned before, it is vital that the application correctly makes use of the Solid API,
+but besides that there is also a need for test users, 
+testing different authorization situations,
+managing different error responses, etc.
+This requires testing against an actual server that provides a quick setup and teardown,
+and can easily emulate different situations.
