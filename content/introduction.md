@@ -31,7 +31,7 @@ both in available tooling and discussions being had,
 everyone can cooperate to improve what is available,
 which again emphasizes the community aspect of Solid.
 
-The Solid Community Server was built from the ground up to support this community aspect.
+The Community Solid Server was built from the ground up to support this community aspect.
 Starting from the design phase, 
 the idea was always that it could be used by a multitude of users:
 ranging from people who want try out this Solid thing,

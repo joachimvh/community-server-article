@@ -1,6 +1,6 @@
-# Solid Community Server Article
+# Community Solid Server Article
 
-A systems paper about the [Solid Community Server](https://github.com/solid/community-server)
+A systems paper about the [Community Solid Server](https://github.com/CommunitySolidServer/CommunitySolidServer)
 
 ## Development mode
 ```

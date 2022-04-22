@@ -4,7 +4,7 @@
 See comunica paper for inspiration: https://comunica.github.io/Article-ISWC2018-Resource/
 {:.todo}
 
-As mentioned in [](#introduction) the goal of the Solid Community Server is to provide
+As mentioned in [](#introduction) the goal of the Community Solid Server is to provide
 a wide spectrum of possibilities for everyone that wants to get involved with Solid,
 from starting hobbyists to Solid-focused research labs,
 all this while still remaining maintainable for future work.
