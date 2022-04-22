@@ -2,31 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta charset="utf-8" />
-  <title property="foaf:name schema:name">Solid Community Server: TODO</title>
+  <title property="foaf:name schema:name">Community Solid Server: TODO</title>
   <link rel="stylesheet" media="screen" href="styles/screen.css" />
   <link rel="stylesheet" media="print"  href="styles/print.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <meta name="citation_title" content="Solid Community Server: TODO">
+  <meta name="citation_title" content="Community Solid Server: TODO">
   <meta name="citation_author" content="Joachim Van Herwegen" />
   <meta name="citation_author" content="Ruben Taelman" />
   <meta name="citation_author" content="Erik Mannens" />
   <meta name="citation_author" content="Tim Berners-Lee" />
   <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2022/02/04" />
+  <meta name="citation_publication_date" content="2022/04/22" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
   <header>
-  <h1 id="solid-community-server-todo">Solid Community Server: TODO</h1>
+  <h1 id="community-solid-server-todo">Community Solid Server: TODO</h1>
 
   <ul id="authors">
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://github.com/joachimvh/" typeof="foaf:Person schema:Person" resource="https://data.verborgh.org/people/joachim_van_herwegen">Joachim Van Herwegen</a><a href="#idlab"><sup>1</sup></a></li>
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="http://www.rubensworks.net/" typeof="foaf:Person schema:Person" resource="http://www.rubensworks.net/#me">Ruben Taelman</a><a href="#idlab"><sup>1</sup></a></li>
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.ugent.be/ea/idlab/en/members/erik-mannens.htm" typeof="foaf:Person schema:Person" resource="https://data.verborgh.org/people/erik_mannens">Erik Mannens</a><a href="#idlab"><sup>1</sup></a></li>
-    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.w3.org/People/Berners-Lee/" typeof="foaf:Person schema:Person" resource="https://www.w3.org/People/Berners-Lee/card#i">Tim Berners-Lee</a><a href="#idlab"><sup>1</sup></a></li>
-    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a><a href="#idlab"><sup>1</sup>,<sup>2</sup></a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.w3.org/People/Berners-Lee/" typeof="foaf:Person schema:Person" resource="https://www.w3.org/People/Berners-Lee/card#i">Tim Berners-Lee</a><a href="#oxford"><sup>2</sup></a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a><a href="#idlab"><sup>1</sup></a>,<a href="#oxford"><sup>2</sup></a></li>
   </ul>
 
   <ul id="affiliations">
@@ -140,7 +140,7 @@ both in available tooling and discussions being had,
 everyone can cooperate to improve what is available,
 which again emphasizes the community aspect of Solid.</p>
 
-          <p>The Solid Community Server was built from the ground up to support this community aspect.
+          <p>The Community Solid Server was built from the ground up to support this community aspect.
 Starting from the design phase, 
 the idea was always that it could be used by a multitude of users:
 ranging from people who want try out this Solid thing,
@@ -156,7 +156,7 @@ to backend developers that want to set up Solid servers with specific requiremen
 
           <p class="todo">See comunica paper for inspiration: https://comunica.github.io/Article-ISWC2018-Resource/</p>
 
-          <p>As mentioned in <a href="#introduction">Section 1</a> the goal of the Solid Community Server is to provide
+          <p>As mentioned in <a href="#introduction">Section 1</a> the goal of the Community Solid Server is to provide
 a wide spectrum of possibilities for everyone that wants to get involved with Solid,
 from starting hobbyists to Solid-focused research labs,
 all this while still remaining maintainable for future work.</p>
@@ -169,17 +169,20 @@ which we will discuss below.</p>
 meaning it can and will change in the future.
 A consequence of this is that any Solid server implementation that wants to stay relevant
 has to be flexible enough, so it can be updated once spec changes occur.
-<span class="comment" data-author="RV">Also, the server can inform the implementation, thanks to its modularity and easy-to-plug-in code. If there’s doubt, just write the CSS module, tweak it, spec it. (I am hereby trademarking <em>Write it, tweak it, spec it</em>)</span>
+Likewise, a modular server can be used to inform the specification:
+if there is any doubt, a new module can quickly be added to assess the impact of a change.
 <span class="comment" data-author="RV">That then ties into research, where we can look at designing completely different APIs and algorithms, and see how it behaves</span></p>
 
           <h3 id="research">Research</h3>
-          <p>We wanted to create a server that could be used to perform research on Solid servers,
-<span class="comment" data-author="RV">well not just we hopefully 🙂 but phrase from the need, not the solution</span>
-meaning it should be easy to automate setup with a variety of different features,
-such as different backends, authorization schemes, identity options, etc.
+          <p>Solid is still growing as an ecosystem,
+this includes the research that investigates all the possibilities of using Solid as a core part of a system.
+This sometimes requires quickly setting up thousands of Solid servers for automation
+and having flexibility in their configuration such as what storage method is used,
+how authorization works,
+or how user accounts are managed, for example.
 <span class="comment" data-author="RV">A specific class of research (and perhaps this also ties into the next point) could be intermediaries, i.e., not just the clients and servers we’re talking about today</span></p>
 
-          <h3 id="server-del-classcomment-data-authorrvdevelopmentdel-ins-classcomment-data-authorrvcustomizationins">Server <del class="comment" data-author="RV">Development</del> <ins class="comment" data-author="RV">Customization</ins></h3>
+          <h3 id="server-customization">Server Customization</h3>
           <p>No Solid server is ever going to fully support everything a user wants:
 there are infinite possible combinations of features that could be required.
 For this reason we wanted to ensure that the implementation allows for easy extension,
@@ -187,12 +190,39 @@ so that if, for example, a user wants the server to use their own custom backend
 they do not have to rewrite a significant part of the server logic.</p>
 
           <h3 id="application-development">Application Development</h3>
-          <p><span class="comment" data-author="RV">Also write this in terms of needs, not solution (yet); also the need for test users, fake logins, fake failures, etc.</span>
-As mentioned before, when developing a Solid application it is vital
-that the application correctly makes uses of the Solid <code>API</code>.
-One of the easiest ways to ensure this is to test the app against an actual server.
-To this end, we wanted the server to also be easily usable by application developers:
-easy to set up, easy to configure and easy to use for their test data.</p>
+          <p>There are many things that have to be checked and kept in mind when developing a new Solid client application.
+As mentioned before, it is vital that the application correctly makes use of the Solid API,
+but besides that there is also a need for test users, 
+testing different authorization situations,
+managing different error responses, etc.
+This requires testing against an actual server that provides a quick setup and teardown,
+and can easily emulate different situations.</p>
+
+          <h3 id="existing-implementations">Existing implementations</h3>
+
+          <p class="todo">Think this makes more sense here instead of in related work?</p>
+
+          <p class="todo">I don’t want to talk too badly about other tools :D</p>
+
+          <p class="todo">use more complex request (PATCH) to explain why CSS handles this better?
+- NSS would not be able to add ACP instead of ACL?</p>
+
+          <p class="todo">LDP is just an API, could also have SPARQL endpoint in addition?</p>
+
+          <p>Some existing LDP servers include <a href="https://marmotta.apache.org/">Apache Marmotta</a>,
+<a href="http://vos.openlinksw.com/owiki/wiki/VOS/VirtLDP">Virtuoso</a>,
+and <a href="https://github.com/trellis-ldp/trellis">Trellis</a>.</p>
+
+          <p>There are also already several existing Solid servers,
+such as <a href="https://github.com/solid/node-solid-server/">Node Solid Server</a>,
+<a href="https://github.com/solid/node-solid-server/">Enterprise Solid Server</a>,
+<a href="https://trinpod.us/">TrinPod</a>,
+<a href="https://github.com/co-operating-systems/Reactive-SoLiD">Reactive-Solid</a>,
+and several others.</p>
+
+          <p>While they each have their own advantages and disadvantages,
+none of these fulfils the requirements that we set up before though.
+Specifically the customization and flexibility requirements that we have, are never fulfilled.</p>
 
         </div>
 </section>
@@ -201,28 +231,36 @@ easy to set up, easy to configure and easy to use for their test data.</p>
 <div datatype="rdf:HTML" property="schema:description">
           <h2 property="schema:name">Related Work</h2>
 
-          <p class="todo">Many more references</p>
-
-          <p class="todo">Figure out what CSS does better than other solutions</p>
-
-          <p><span class="comment" data-author="RV">More specifically: why off-the-shelf LDP solutions would not do</span></p>
-
-          <p>use more complex request (PATCH) to explain why CSS handles this better
-- NSS would not be able to add ACP instead of ACL</p>
-
-          <p>LDP is just an API, could also have SPARQL endpoint in addition</p>
+          <p class="todo">Many more references?</p>
 
           <h3 id="linked-data-platform">Linked Data Platform</h3>
-          <p>apache marmotta? virtuoso? trellis?mayktso?</p>
+          <p>Linked Data Platform <span class="references">[<a href="#ref-2">2</a>]</span> (LDP) is a set of rules to provide a RESTful API
+to read/write Linked Data resources on the Web.
+It introduces several concepts such as using URIs to identify resources
+and using RDF standards to provide information and data.</p>
 
           <h3 id="solid">Solid</h3>
-          <p>ESS? NSS? PSS? reactive-solid?</p>
+          <p>The <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1145/2872518.2890529"><a href="https://doi.org/10.1145/2872518.2890529">Solid</a></span> <span class="references">[<a href="#ref-1">1</a>]</span> project is a combination of <a href="https://solid.github.io/specification/">specifications</a>
+with a focus on data ownership and data interoperability.
+At its core is the <a href="https://solidproject.org/TR/protocol">Solid Protocol</a> specification
+which determines how Solid servers should behave.
+It is built upon the LDP specification and has a stricter
+and more well-defined expectation for each of the CRUD operations.</p>
 
           <h3 id="componentsjs">Components.js</h3>
-          <p>Also see configuration section</p>
+          <p><a property="schema:citation http://purl.org/spar/cito/cites" href="https://linkedsoftwaredependencies.github.io/Article-System-Components/">Components.js</a> <span class="references">[<a href="#ref-3">3</a>]</span> is a Dependency Injection framework built specifically
+for <a href="https://www.typescriptlang.org/">TypeScript</a> projects.
+It is non-invasive in that all of its configurations happens outside the source code in external configuration files,
+which describe how classes are linked to each other and which parameters they require.
+These descriptions are done in RDF, which means that those configuration files are valid RDF serializations.
+Usually <a href="https://json-ld.org/">JSON-LD</a> is used.</p>
 
           <h3 id="oidc">OIDC</h3>
-          <p>webid, oidc</p>
+          <p>To handle authentication, the server implements the <a href="https://solid.github.io/solid-oidc/">Solid-OIDC</a> specification,
+which builds upon the <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.17487/RFC6749"><a href="https://www.rfc-editor.org/info/rfc6749">OAuth 2.0</a></span> <span class="references">[<a href="#ref-4">4</a>]</span> and 
+<a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect Core 1.0</a> standards.
+These are two widely adopted standards,
+and the above specification extends them to solve problems specific for the Solid ecosystem.</p>
 
         </div>
 </section>
@@ -445,23 +483,29 @@ it can only apply a SPARQL UPDATE query on a set of triples.</p>
 <div datatype="rdf:HTML" property="schema:description">
           <h2 property="schema:name">Configuration</h2>
 
-          <p class="todo">How much of components.js do we explain here compared to related work?</p>
-          <p><span class="comment" data-author="RV">My opinion: none at all. We normally have explained declarative DI already above; here we just say we chose c.js because it 1) is a great TS DI that 2) has LD configs, which 3) allows for easy sharing of configs, in particular for research/experimental purposes.</span></p>
+          <p>As mentioned in <a href="#related-work">Section 3</a>,
+the server makes use of the Dependency Injection framework <a property="schema:citation http://purl.org/spar/cito/cites" href="https://linkedsoftwaredependencies.github.io/Article-System-Components/">Components.js</a> <span class="references">[<a href="#ref-3">3</a>]</span>
+This allows us to combine all the independent components discussed in <a href="#architecture">Section 4</a>.</p>
 
-          <p>talk about how imports match features to help users</p>
-
-          <p>To combine all the independent components discussed in <a href="#architecture">Section 4</a>
-we make use of the dependency injection framework <a href="https://componentsjs.readthedocs.io/">Components.js</a>,
-which uses <a href="https://json-ld.org/">JSON-LD</a> configuration files to link all the components together.</p>
-
-          <h3 id="span-classrephrase-data-authorrvease-of-usespan"><span class="rephrase" data-author="RV">Ease of use</span></h3>
-          <p>Components.js is a <span class="rephrase" data-author="RV">very strong</span> framework with much flexibility,
+          <p>It is a framework with much flexibility and options,
 but it does have a steep startup curve before fully understanding how configuration works.
 To this end we took several steps to make configuration as easy as possible for new users.</p>
 
-          <p>The server comes bundled with several default configurations that can be used out of the box.
+          <h3 id="default-configurations">Default configurations</h3>
+
+          <p>Due to the external nature of the configurations,
+Components.js allows us to provide many different versions of the server to the users.</p>
+
+          <p>The server comes bundled with several 
+<a href="https://github.com/CommunitySolidServer/CommunitySolidServer/tree/main/config">default configurations</a> 
+that can be used out of the box.
 These include different backends, such as file or memory based,
 and examples on how to configure more complex features.</p>
+
+          <p>These default configurations cover the main use cases of many users,
+and those who do want to configure a different experience can often achieve this by only making minor adjustments.</p>
+
+          <h3 id="feature-options">Feature options</h3>
 
           <p>Since RDF is used, it is possible to split the configuration up over multiple files
 and then import them into a single file.
@@ -471,8 +515,9 @@ For example, the only difference between a configuration to set up a server with
 compared to one with a file backend is that the first one imports <code>/storage/backend/memory.json</code>
 and the second one imports <code>/storage/backend/file.json</code>.
 This is just one of the imports that users can modify to change behaviour.
-To help with the choices there, all configuration subfolders contain documentation
-explaining the options available.</p>
+To help with the choices there, there is documentation explaining all the available options.</p>
+
+          <h3 id="configuring-extensions">Configuring extensions</h3>
 
           <p>When someone wants to develop a new component for the server,
 adding Components.js configuration to link it correctly will be a requirement.
@@ -494,38 +539,43 @@ should help as examples of how to link components.</p>
           <h3 id="repository">Repository</h3>
           <p class="todo">Update numbers when finished</p>
 
-          <p>At the time of writing, the <a href="https://github.com/solid/community-server">repository</a>
-has 200 stars and 50 forks.
-The corresponding <a href="https://gitter.im/solid/community-server">gitter</a> chatroom has 55 people.</p>
+          <p>At the time of writing, the <a href="https://github.com/CommunitySolidServer/CommunitySolidServer">repository</a>
+has 288 stars and 72 forks.
+The corresponding <a href="https://gitter.im/CommunitySolidServer/community">gitter</a> chatroom has 32 people.</p>
 
           <h3 id="maintenance">Maintenance</h3>
           <p>During the development of the server
 we have always focused on making sure the code bases remained of high quality.
-One way we did this is by enforcing all new code to be added through pull requests,
-which always require at least one code review before being able to be merged.
-This means that all code is seen by multiple people before being added.</p>
-
-          <p>Another requirement of new code being added is that unit tests
-always have 100% code coverage on all code in the project.
-<span class="comment" data-author="RV">Would list this one first</span>
+One way we did this is by requiring the unit tests 
+to always have 100% code coverage on all code in the project.
 While this is not immediately an indication of everything working as intended,
 it does make sure that a developer checks that new classes output data as expected.</p>
+
+          <p>Another requirement is that all new code needs to be added through pull requests,
+which always require at least one code review before being able to be merged.
+This means that all code is seen by multiple people before being added.</p>
 
           <p>Besides the unit tests, we also have extensive integration tests covering the larger parts of the server.
 These, for example, test all the entire Identity Provider procedures
 and all the supported LDP actions.</p>
 
           <h3 id="projects">Projects</h3>
-          <p>Some projects that other people have already made with the server:
- * Reading calendar data using a Solid server: https://github.com/KNowledgeOnWebScale/solid-calendar-store/
- * Operating Philips Hue lamps through a Solid server: https://github.com/RubenVerborgh/solid-hue/
- * Data-Kitchen, a desktop app combining local files and Solid pods: https://github.com/solid/data-kitchen/</p>
+          <p>Some projects that other people have already made with the server:</p>
+          <ul>
+  <li>Reading calendar data using a Solid server: https://github.com/KNowledgeOnWebScale/solid-calendar-store/</li>
+  <li>Operating Philips Hue lamps through a Solid server: https://github.com/RubenVerborgh/solid-hue/</li>
+  <li>Data-Kitchen, a desktop app combining local files and Solid pods: https://github.com/solid/data-kitchen/</li>
+  <li>Solid-Redis, a component for the server to use Redis as data storage: https://github.com/comake/solid-redis</li>
+</ul>
 
-          <p><span class="comment" data-author="RV">And all apps that work on the server?</span></p>
+          <p><a href="https://get.use.id/">use.id</a> is an example of a commercial product that was built using the server.</p>
+
+          <p class="todo">Make sure this URL (and many others) also appear in the printed version.</p>
+
+          <p><span class="comment" data-author="RV">And all apps that work on the server?</span>
+<span class="comment" data-author="JVH">Do you mean Solid client apps? Will have to investigate which ones are up to date enough to work. Media Kraken and Mashlib are at least 2.</span></p>
 
           <p class="todo">Do we explicitly have to say which projects are related to our lab?</p>
-
-          <p class="todo">Any companies/large projects we should add? Digita? Cern? …?</p>
 
         </div>
 </section>
@@ -535,8 +585,7 @@ and all the supported LDP actions.</p>
           <h2 property="schema:name">Future Work &amp; Conclusions</h2>
 
           <p>We have achieved our initial goal of creation a server that has uses for a wide target audience,
-as can be seen by the interest of both hobby users and <span class="rephrase" data-author="RV">companies</span>.
-<span class="comment" data-author="RV">Yeah, but keep in mind that our goal is R&amp;D, so even when companies are adopting this (which is great), we should still check that we are meeting our goals.</span></p>
+as can be seen by the interest of both hobby and expert users.</p>
 
           <p>In the future we want to keep making sure the server adheres to the Solid specification,
 but also keep extending its functionality so it becomes both more user-friendly
@@ -547,7 +596,9 @@ We follow the <a href="https://semver.org/">semantic versioning</a> guidelines t
 we do not break any server installation.
 For each new release, notes are added indicating both the new features 
 and how configurations of older versions can be upgraded to the newer version.
-<span class="comment" data-author="RV">Specific challenge of “everything” being public API?</span></p>
+Since all classes and configurations are part of the public API of the package,
+most changes immediately require a major version increase,
+which causes a faster upgrade cycle.</p>
 
           <p>Due to the modular nature of the components,
 it is not required for all new features to be added to the main repository.
@@ -579,6 +630,8 @@ which could be part of their business model.</p>
   <dd resource="#ldp" typeof="schema:CreativeWork">Speicher, S., Malhotra, A., Arwe, J.: Linked Data Platform 1.0. W3C (2015).</dd>
   <dt id="ref-3">[3]</dt>
   <dd resource="https://linkedsoftwaredependencies.github.io/Article-System-Components/" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Components.js: Semantic Dependency Injection. Semantic Web Journal. (2022).</dd>
+  <dt id="ref-4">[4]</dt>
+  <dd resource="https://dx.doi.org/10.17487/RFC6749" typeof="schema:CreativeWork">Hardt, D.: The OAuth 2.0 Authorization Framework. <a href="https://www.rfc-editor.org/info/rfc6749">https:/​/​www.rfc-editor.org/info/rfc6749</a> (2012). doi:10.17487/RFC6749</dd>
 </dl>
 </section>
 </footer>
