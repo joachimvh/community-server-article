@@ -12,6 +12,12 @@ all this while still remaining maintainable for future work.
 There are three different axes we wanted to cover during the design of the server,
 which we will discuss below.
 
+<span class="comment" data-author="RV">I see 4 🙃</span>
+
+<span class="comment" data-author="RV">I wonder if we should have a stakeholders discussion. What do researchers and developers aim to achieve?</span>
+
+<span class="comment" data-author="RV">Perhaps spec writers are stakeholders too.</span>
+
 ### Evolving Solid specification
 The Solid specification is still a draft specification,
 meaning it can and will change in the future.
