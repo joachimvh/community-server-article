@@ -10,7 +10,7 @@ This allows anyone to easily swap out any implementation without impacting other
 as long as they follow those same interfaces.
 
 ### Components
-<span class="comment" data-author="RV">So what I'm missing a bit below are the simple truths: <q>you start the server with a config file, that is JSON-LD. These configuration files can be mixed and match to start slightly different servers: great for R &amp; D. To support that, we did…</q> It's all in there, but in different places, and it's hard to get it out unless you exactly know what you're looking for—and only we as authors do.</span>
+<span class="comment" data-author="RV">So what I'm missing a bit below are the simple truths: <q>you start the server with a config file, that is JSON-LD. These configuration files can be mixed and match to start slightly different servers: great for R &amp; D. To support that, we did…</q> It's all in there, but in different places, and it's hard to get it out unless you exactly know what you're looking for—and only we as authors do. Note that this can perhaps be mitigated easily when moving [](#configuration) before this section, as I explain there.</span>
 
 To combine the classes and set up their dependencies,
 we make use of a Dependency Injection (DI) framework,

@@ -1,6 +1,8 @@
 ## Configuration
 {:#configuration}
 
+<span class="comment" data-author="RV">Suggestion: move this before architecture. Then we can talk about this on a high level: why are different configs so interesting? What can we do with them? Then the architecture section can explain how the configs actually work. I.e., use the configs as a starting point, as a necessity, and then the things the architecture needs to do to support this.</span>
+
 As mentioned in [](#related-work),
 the server makes use of the Dependency Injection framework [Components.js](cite:cites componentsjs)
 This allows us to combine all the independent components discussed in [](#architecture).
@@ -48,3 +50,5 @@ but the server is set up to generate those automatically using
 saving developers much work.
 Besides that, the many configurations included with the server
 should help as examples of how to link components.
+
+<span class="comment" data-author="RV">Walk us through some extensions; walk us through some recipes and briefly what they do.</span>
